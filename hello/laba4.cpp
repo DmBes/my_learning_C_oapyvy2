@@ -63,13 +63,16 @@ void main()
 
 void inputArray(int Cikl, double *array, char *nomer_massiva)
 {
+
+
 	double summ = 0;
 	for (int begin = 0; begin < Cikl; begin++)
 	{
 		printf_s("\n¬ведите значени€ массива [%d],[%d]= ", *nomer_massiva, begin);
 		scanf_s("%lf", &array[begin]);
 		//printf_s("%.4lf", array[begin]);
-		summ += array[begin];
+		begin == 0 ? summ = array[begin] : summ = summ * array[begin];
+		//summ += array[begin];
 		//printf_s("\n%lf", summ);
 
 	}
