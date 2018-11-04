@@ -146,6 +146,8 @@ void main()
 	function2(N, massivA, nomer_massive);
 	function2(M, massivB, nomer_massive);
 	my_print2(massivA, massivB, N, M);
+	free(massivA);
+	free(massivB);
 	_getch();
 }
 
