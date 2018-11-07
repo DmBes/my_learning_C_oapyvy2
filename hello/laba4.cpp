@@ -10,7 +10,7 @@
 void my_print(int, double*);
 void inputArray(int, double*, char*);
 
-void main3()
+void laba4()
 {
 	setlocale(LC_CTYPE, "rus");
 	system("cls");
@@ -128,7 +128,7 @@ void my_print2(double *array_1, double *array_2, int a, int b)
 void function2(int, double*, char *user_name_array);
 
 
-void main22()
+void laba41()
 {
 	setlocale(LC_CTYPE, "rus");
 	system("cls");
@@ -204,7 +204,7 @@ void zadanie2(int razmer_massiva, int *sam_massiv)
 
 
 
-void main5()
+void laba42()
 {
 	int n;
 	int *array;
