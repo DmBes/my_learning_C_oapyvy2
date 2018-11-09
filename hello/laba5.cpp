@@ -91,7 +91,7 @@ void my_print_massive(int **, int *, int *, int *);
 int counter(int **, int *, int *);
 void delete_cash(int **, int *);
 
-void main()
+void main234()
 {
 	setlocale(LC_CTYPE, "rus");
 	int n, m, *high, *longer;
