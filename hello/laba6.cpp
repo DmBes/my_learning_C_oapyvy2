@@ -8,7 +8,7 @@ void string_my(char *);
 void new_arrays(char *, int p, int *);
 
 
-void main()
+void main33()
 {
 	char *array;
 	array = new char[300];
