@@ -5,10 +5,10 @@
 #include <stdlib.h>
 
 void string_my(char *);
-void new_arrays(char *, int *);
+void new_arrays(char *, int p, int *);
 
 
-void main() 
+void main()
 {
 	char *array;
 	array = new char[300];
@@ -31,24 +31,27 @@ void string_my(char *array)
 	printf_s("longer is %d\n", longer);
 	if (_mbstrlen(array) % 2 != 0)
 	{
-		int s = _mbstrlen(array);
+		int s = _mbstrlen(array) / 2;
 		int *dl = &s;
 		printf_s("%d", s / 2);
-		new_arrays(array, dl);
+		new_arrays(array, longer, dl);
 	}
 	puts(array);
 	system("pause");
 }
 
 
-void new_arrays(char *mas, int *x) 
+void new_arrays(char *mas, int p, int *x)
 {
 	printf("\n\n\n\n");
 
 
-	for (int key = 0; key < *x; key++)
+	for (int key = 0; key < p; key++)
 	{
-
+		if (key != *x) {
+			printf_s("%c", mas[key]);
+		}
+		else continue;
 	}
 	printf("\n\n\n\n");
 }
