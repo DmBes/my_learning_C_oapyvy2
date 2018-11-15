@@ -28,7 +28,7 @@ void change_number(int * number_1, int * number_2)
 }
 
 
-	void prosto_ykazatel()
+	void main343()
 	{
 		int a, b;
 		int *uk_a;
@@ -54,12 +54,12 @@ void change_number(int * number_1, int * number_2)
 		system("pause");
 
 
-		scanf_s("%d", *uk_uk_a);
-		printf_s("\n\n\n ”казатель на указатель %d \n", a);
+		scanf_s("%d", uk_a);
+		printf_s("\n\n\n ”казатель на указатель %d \n", *uk_a);
 		system("pause");
 		
 		scanf_s("%d", **uk_uk_uk_a);
-		printf_s("\n\n\n ”казатель на указатель указатель %d \n", a);
+		printf_s("\n\n\n ”казатель на указатель указатель %d \n", ***uk_uk_uk_a);
 		system("pause");
 	}
 
@@ -78,8 +78,12 @@ void change_number(int * number_1, int * number_2)
 	}
 
 
-	void main() {
+
+
+	void mai44n() {
 		int c[5];
+		int **d;
+
 
 
 		setlocale(LC_CTYPE, "rus");
@@ -89,9 +93,10 @@ void change_number(int * number_1, int * number_2)
 			scanf_s("%d", c + i);
 			//scanf_s("%d", &c[i]);
 			printf_s("значени€ %d равно %d\n", i, *(c + i));
-			printf_s("\n\n\n", i, *(c + i));
+			printf_s("\n\n\n");
 			
 
 		}
 		F_uk(c);
+		
 	}

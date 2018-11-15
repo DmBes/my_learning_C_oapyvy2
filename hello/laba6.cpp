@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <string.h>
 
 void string_my(char *);
 void new_arrays(char *, int p, int *);
@@ -32,6 +33,7 @@ void string_my(char *array)
 	if (_mbstrlen(array) % 2 != 0)
 	{
 		int s = _mbstrlen(array) / 2;
+		//int s = strlen(array);
 		int *dl = &s;
 		printf_s("%d", s / 2);
 		new_arrays(array, longer, dl);
