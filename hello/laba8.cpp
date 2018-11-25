@@ -157,7 +157,7 @@ int correction_of_records(int * choice)
 {
 	FILE*bus;
 	Bus_Station autobus[30];
-	int kol_vo = 0;
+m2:	int kol_vo = 0;
 
 	if ((bus = fopen("D:\\bus.txt", "r")) == NULL)
 	{
@@ -174,7 +174,7 @@ int correction_of_records(int * choice)
 	fclose(bus);
 	fflush(stdin);
 
-m2:	menu_correction(choice);
+	menu_correction(choice);
 
 
 	switch (*choice)
