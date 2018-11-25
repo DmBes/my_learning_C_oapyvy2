@@ -159,6 +159,8 @@
     <ClCompile Include="laba5.cpp" />
     <ClCompile Include="laba6.cpp" />
     <ClCompile Include="laba7.cpp" />
+    <ClCompile Include="laba8.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="yk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
