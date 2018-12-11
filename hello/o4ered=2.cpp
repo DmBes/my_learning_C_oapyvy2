@@ -18,7 +18,7 @@ void printa_list(struct list_element *);
 struct list_element * create_FIFO(int);
 void deletea_list(struct list_element *);
 
-void main()
+void main46()
 {
 	int N;
 	struct list_element * FIRST = NULL; //”казатель на первый элемент списка

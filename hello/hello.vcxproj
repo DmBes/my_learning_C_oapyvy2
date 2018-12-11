@@ -167,6 +167,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="stek.cpp" />
     <ClCompile Include="stek2.cpp" />
+    <ClCompile Include="three.cpp" />
     <ClCompile Include="yk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
