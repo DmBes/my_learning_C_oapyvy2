@@ -160,7 +160,13 @@
     <ClCompile Include="laba6.cpp" />
     <ClCompile Include="laba7.cpp" />
     <ClCompile Include="laba8.cpp" />
+    <ClCompile Include="laba9-2.cpp" />
+    <ClCompile Include="laba9.cpp" />
+    <ClCompile Include="o4ered.cpp" />
+    <ClCompile Include="o4ered=2.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="stek.cpp" />
+    <ClCompile Include="stek2.cpp" />
     <ClCompile Include="yk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

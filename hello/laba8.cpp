@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <process.h>
 #include <string.h>
+#include <stdlib.h>
 
 /*
 В справочной автовокзала хранится расписание движения
@@ -51,7 +52,7 @@ int filtr();
 
 
 //Главная функция
-int main(int argc, char *argv[])
+int main23(int argc, char *argv[])
 {
 
 
@@ -86,11 +87,11 @@ m1:	menu(&user_choice);
 
 
 
-	if (remove("D:\\bus.txt") == 0) printf("File delete");
-	else
-	{
-		printf("File don't delete");
-	}
+	//if (remove("D:\\bus.txt") == 0) printf("File delete");
+	//else
+	//{
+	//	printf("File don't delete");
+	//}
 	_getch();
 	return 0;
 }
@@ -143,8 +144,8 @@ int read_file()
 	}
 	printf("Number of race|\t Type Race|\t Destinition|\t Time Departure|\t Time Arival| \n");
 	while (fread(autobus, sizeof(Bus_Station), 1, bus) != NULL) {
-		
-		printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", autobus->number_of_race, autobus->bus_type , autobus->destinition, autobus->time_d.departure_hour, autobus->time_d.departure_minute, autobus->time_a.hour_arrival, autobus->time_a.minute_arrival);
+
+		printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", autobus->number_of_race, autobus->bus_type, autobus->destinition, autobus->time_d.departure_hour, autobus->time_d.departure_minute, autobus->time_a.hour_arrival, autobus->time_a.minute_arrival);
 
 	}
 	system("pause");
@@ -168,7 +169,7 @@ m2:	int kol_vo = 0;
 
 	while (fread(autobus, sizeof(Bus_Station), 1, bus) != NULL) {
 
-		kol_vo ++;
+		kol_vo++;
 	}
 
 	fclose(bus);
@@ -211,6 +212,7 @@ int filtr()
 	int hour;
 	int minute;
 	Bus_Station autobus[30];
+	Bus_Station filtr[30];
 	read_file();
 	if ((bus = fopen("D:\\bus.txt", "r")) == NULL)
 	{
@@ -228,34 +230,68 @@ int filtr()
 	scanf_s("%d%*c", &hour);
 	printf_s("Минуту прибытия: ");
 	scanf_s("%d%*c", &minute);
+	int index = 0;
 
 	while (fread(autobus, sizeof(Bus_Station), 1, bus) != NULL) {
-		
 
-		
 
-		if (!strcmp(autobus->destinition , dest)) {
+
+
+
+		if (!strcmp(autobus->destinition, dest)) {
 			if (autobus[0].time_a.hour_arrival < hour) {
 				printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", autobus->number_of_race, autobus->bus_type, autobus->destinition,
 					autobus->time_d.departure_hour, autobus->time_d.departure_minute, autobus->time_a.hour_arrival,
 					autobus->time_a.minute_arrival);
+				memcpy(&filtr[index], &autobus, sizeof(Bus_Station));
+
+
+				index++;
+
+
 
 
 			}
 			else if (autobus[0].time_a.hour_arrival == hour)
 			{
-				if(autobus[0].time_a.minute_arrival <= minute){
+				if (autobus[0].time_a.minute_arrival <= minute) {
 					printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", autobus->number_of_race, autobus->bus_type, autobus->destinition,
 						autobus->time_d.departure_hour, autobus->time_d.departure_minute, autobus->time_a.hour_arrival,
 						autobus->time_a.minute_arrival);
+					memcpy(&filtr[index], &autobus, sizeof(Bus_Station));
+					index++;
 
 				}
 			}
-		
+
 		}
 
 	}
+	printf("_____________________________________________________________________________________________\n");
+	int *ptr;
+	ptr = (int *)(calloc(index, sizeof(int)));
+	for (int i = 0; i < index; i++)
+	{
+		if (ptr[i]) continue;
+		printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", filtr[i].number_of_race, filtr[i].bus_type, filtr[i].destinition,
+			filtr[i].time_d.departure_hour, filtr[i].time_d.departure_minute, filtr[i].time_a.hour_arrival,
+			filtr[i].time_a.hour_arrival);
+		for (int dubl = i + 1; dubl <= index; dubl++)
+		{
+			if (!strcmp(filtr[i].bus_type, filtr[dubl].bus_type)) {
+				printf("\t%d\t %s\t\t %s \t\t\t%d:%d \t\t%d:%d \n", filtr[dubl].number_of_race, filtr[dubl].bus_type, filtr[dubl].destinition,
+					filtr[dubl].time_d.departure_hour, filtr[dubl].time_d.departure_minute, filtr[dubl].time_a.hour_arrival,
+					filtr[dubl].time_a.hour_arrival);
+				ptr[dubl] = 1;
 
+
+
+			}
+		}
+
+	}
+	printf("index = %d", index);
+	_getch();
 	return 0;
 }
 
@@ -266,6 +302,7 @@ int item_correction(int *kolvo)
 	int choice_delete = 0;
 	system("cls");
 	read_file();
+	if (*kolvo == 0) return 0;
 	printf_s("На текущий момент в базе присутствует %d записей\n", *kolvo);
 	do
 	{
@@ -364,7 +401,7 @@ int item_delete(int *kolvo)
 		printf_s("Вы желаете удалить какую из записей вы хотите удалить? от 1 до %d: ", *kolvo);
 		scanf_s("%d%*c", &choice_delete);
 	} while (choice_delete < 1 || choice_delete > *kolvo);
-	
+
 	FILE*bus_read;
 	FILE*bus_write;
 
@@ -374,13 +411,13 @@ int item_delete(int *kolvo)
 
 	bus_read = fopen("D:\\bus.txt", "rb");
 	bus_write = fopen("D:\\bus_vrem.txt", "wb");
-	
+
 
 	while (fread(autobus_read, sizeof(Bus_Station), 1, bus_read) != NULL) {
 
 		if (cikl + 1 != choice_delete) fwrite(autobus_read, sizeof(Bus_Station), 1, bus_write);
 		cikl++;
-		
+
 	}
 
 	fclose(bus_read);
@@ -413,7 +450,7 @@ int item_delete(int *kolvo)
 // Функция по добавлению строк
 int item_add(int *kolvo)
 {
-	int i= 0, number_of_element = 0;
+	int i = 0, number_of_element = 0;
 	printf_s("На текущий момент в базе содежится информация о %d элементах\n", *kolvo);
 	printf_s("Укажите сколько элементов вы хотите добавить (приминаемые значения от 1 до ...: ");
 	do {
@@ -428,7 +465,7 @@ int item_add(int *kolvo)
 	//param = new Bus_Station[i];
 
 
-	
+
 
 	if ((files = fopen("d:\\bus.txt", "a+b")) == NULL) {
 		printf("Cannot open file.\n");
@@ -475,7 +512,7 @@ int item_add(int *kolvo)
 	//	fwrite(param, sizeof(Bus_Station), number_of_element, files);
 	//}
 
-	
+
 	for (int i = 0; i < number_of_element; i++) {
 		//system("cls");
 		printf_s("Номер записи добавленной %d\n", i + 1);
@@ -549,6 +586,5 @@ int menu_correction(int *choice) {
 	system("cls");
 	return 0;
 }
-
 
 
