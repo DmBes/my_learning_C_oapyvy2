@@ -15,17 +15,7 @@
 
 
 
-«јƒјЌ»≈ 2. ƒеревь€
-–азработать проект дл€ обработки дерева поиска, каждый элемент которого содержит целочисленный ключ и строку текста, содержащую, например, ‘»ќ и номер паспорта (ввод исходной информации рекомендуетс€ записать в файл). ¬ программе должны быть реализованы следующие возможности:
-Ц  создание дерева;
-Ц  добавление новой записи;
-Ц  поиск информации по заданному ключу;
-Ц  удаление информации с заданным ключом;
-Ц  вывод информации;
-Ц  решение индивидуального задани€;
-Ц  освобождение пам€ти при выходе из программы.
 
->>>>>>>>>>>>>>>>2. ѕодсчитать число листьев в дереве.
 
 */
 
@@ -44,7 +34,7 @@ int print_spisok(struct lin_spis *);
 struct lin_spis *start(struct lin_spis *);
 //int delete_spisok(int);
 
-int main(int argc, char *argv[])
+int main654(int argc, char *argv[])
 {
 
 	int znac = 0;
@@ -71,6 +61,7 @@ int main(int argc, char *argv[])
 			my_spis = add_spisok(my_spis);
 			break;
 		case 4:
+
 			my_spis = start(my_spis);
 			break;
 		case 5:
@@ -127,12 +118,6 @@ struct lin_spis *start(struct lin_spis *my_spis)
 
 
 
-	//while(my_spis)					//(my_spis->number % 2 == 0 && my_spis != NULL)
-	//{
-	//	ydal = my_spis;
-	//	my_spis = my_spis->previus_number;
-	//	//	delete ydal;
-	//}
 
 
 

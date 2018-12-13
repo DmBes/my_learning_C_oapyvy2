@@ -59,7 +59,7 @@ der *sozd(der *dr)
 	}
 	puts("¬ведите информацию в корень дерева");
 	dr->inf = (char *)calloc(1, sizeof(char)*N);
-	gets(dr->inf);
+	fgets(dr->inf,50,stdin);
 	dr->n = 1; // число повторов информации в дереве
 	return dr;
 }
@@ -81,7 +81,7 @@ void add(der *dr)
 	{
 		puts("¬ведите информацию в очередной узел дерева (0 - выход)");
 		st = (char *)calloc(1, sizeof(char)*N); //пам€ть под символьную инф.
-		gets(st);
+		fgets(st,50, stdin);
 		if (!*st) return; // выход в функцию main
 		dr1 = dr;
 		ind = 0; // 1 - признак выхода из цикла поиска
